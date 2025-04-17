@@ -1,0 +1,167 @@
+# Goodwish Engineering: Company Information
+
+## Introduction to Goodwish Engineering
+
+Goodwish Engineering is a trailblazing technology startup based in Nepal, committed to transforming the nation’s technological landscape through innovative artificial intelligence (AI) and software solutions. Founded with a vision to empower Nepalese innovators, Goodwish Engineering combines creativity, technical expertise, and a deep understanding of local challenges to deliver cutting-edge products and services. Headquartered in Kupondole, Lalitpur, Nepal, the company specializes in software development, AI-driven solutions, hardware integrations, and bespoke technology projects that cater to diverse industries, from education and cultural preservation to infrastructure and workforce management.
+
+At the core of Goodwish Engineering’s mission is the belief that technology is a catalyst for progress. By developing accessible, sustainable, and innovative solutions, the company aims to reduce Nepal’s reliance on external technological ecosystems and foster a self-reliant future. Goodwish Engineering’s flagship product, WishChat, exemplifies this commitment, offering businesses an intuitive platform to create AI-powered chatbots for seamless customer engagement. With a talented team of software developers, AI engineers, and robotics specialists, Goodwish Engineering is paving the way for Nepal to lead in the global tech revolution.
+
+**Contact Information**:
+- **Address**: Kupondole, Lalitpur, Nepal
+- **Phone**: 01-5400114
+- **Email**: info@goodwish.com.np
+- **Social Media**:
+  - Facebook: https://www.facebook.com/p/Goodwish-Engineering-61571584179109/
+  - LinkedIn: https://www.linkedin.com/company/goodwish-engineering/posts/?feedView=all
+
+## Vision and Mission
+
+### Vision
+Goodwish Engineering envisions a future where Nepalese innovators are at the forefront of the global technology landscape, confidently building and mastering advanced AI and software solutions. The company strives to inspire and empower the next generation of creators, enabling them to shape a world powered by homegrown technology that addresses both local and global challenges.
+
+### Mission
+The mission of Goodwish Engineering is to establish a robust AI and software ecosystem in Nepal, step by step, by creating innovative and sustainable technology solutions. By empowering businesses, government institutions, and individuals with accessible tools and services, the company aims to drive digital transformation and ensure Nepal thrives in the modern technological era. Goodwish Engineering is dedicated to bridging the gap between ambition and opportunity through technology that is tailored to the unique needs of its clients and communities.
+
+## Message from the CEO
+
+Bikrant Karki, CEO and Founder of Goodwish Engineering, is a visionary leader with a passion for leveraging technology to solve real-world challenges. His message reflects the company’s commitment to innovation and empowerment:
+
+“At Goodwish Engineering, we are driven by a singular purpose: to redefine Nepal’s technological future. As a proud Nepalese startup, we are dedicated to crafting AI and software solutions that empower our communities, businesses, and institutions. To me, technology is not just a tool—it is a bridge to opportunity, a catalyst for progress, and a pathway to a self-reliant Nepal. My journey in robotics and AI, from leading the Robotics Academy of Nepal to delivering transformative projects for organizations like Guthi Sansthan, has reinforced my belief in the power of innovation. At Goodwish Engineering, we bring this passion to life through solutions like WishChat, our AI-powered chatbot platform that enables businesses to automate and engage effortlessly, and through bespoke software that supports cultural preservation, modern infrastructure, and more. Our vision is to see Nepalese innovators lead the global tech revolution, building and mastering the new age of AI and software. We are committed to ensuring Nepal creates its own technological ecosystem, reducing reliance on external solutions. Join us on this journey to innovate, empower, and build a brighter future where Nepal’s tech talent shines on the global stage.”
+
+— Bikrant Karki, CEO
+
+## Our Projects
+
+Goodwish Engineering has delivered a diverse portfolio of projects that demonstrate its expertise in software development, AI, and digital transformation. Below is a detailed overview of the company’s key projects, including links for public projects and contact instructions for private ones.
+
+### 1. Abroad Unbox Website
+The Abroad Unbox website is a comprehensive digital platform designed for a consultancy specializing in study abroad programs. Developed by Goodwish Engineering, the website empowers students to explore international education opportunities with ease, offering detailed information on universities, visa processes, scholarships, and other essential resources. The platform features a user-friendly interface and responsive design, ensuring accessibility across desktops, tablets, and mobile devices. By bridging the gap between ambition and opportunity, the Abroad Unbox website helps students make informed decisions about their academic and professional futures.
+
+- **Link**: https://abroadunbox.com
+- **Key Features**:
+  - Intuitive navigation for exploring study abroad programs
+  - Comprehensive resources on universities and visa requirements
+  - Responsive design for seamless access on all devices
+
+### 2. Guthi Sansthan Website
+The Guthi Sansthan website is the official digital platform for Nepal’s premier cultural government office, dedicated to preserving and promoting the nation’s rich heritage. Goodwish Engineering developed this website to facilitate cultural preservation through digital transformation, incorporating features such as event listings, heritage documentation, and public resources. The platform is designed to be intuitive and accessible, enabling both local and global users to engage with Nepal’s cultural legacy effortlessly.
+
+- **Link**: https://guthisansthan.org.np
+- **Key Features**:
+  - Event listings for cultural activities and festivals
+  - Digital archives for heritage documentation
+  - User-friendly interface for locals and international visitors
+
+### 3. Parking Management System
+The Parking Management System is an integrated software solution designed to streamline parking operations for businesses and municipalities. Developed by Goodwish Engineering, this system enables parking staff to generate entry and exit tickets, manage vehicle records, and visualize financial data through interactive graphs and reports. With a focus on efficiency and transparency, the system optimizes parking space usage and provides clear insights into revenue and operational performance. This is a private project, and interested parties are invited to contact Goodwish Engineering for more details or to request a demo.
+
+- **Link**: Contact Us (#contact)
+- **Key Features**:
+  - Ticket generation for vehicle entry and exit
+  - Real-time vehicle record management
+  - Interactive financial dashboards with graphs and reports
+
+### 4. Face Attendance App
+The Face Attendance App, developed for Guthi Sansthan, is a state-of-the-art mobile application available on both Android and iOS platforms. Leveraging advanced facial recognition technology, this app streamlines attendance tracking for employees, replacing traditional methods with a fast, secure, and contactless solution. Goodwish Engineering designed this app to enhance operational efficiency while ensuring accuracy and ease of use, making it an ideal tool for modern workforce management. This is a private project, and interested parties are encouraged to contact Goodwish Engineering for more information or a demo.
+
+- **Link**: Contact Us (#contact)
+- **Key Features**:
+  - Facial recognition for secure attendance tracking
+  - Cross-platform availability (Android and iOS)
+  - User-friendly interface for seamless operation
+
+### 5. File Tracking System
+The File Tracking System, created for Guthi Sansthan, is a digital solution that modernizes document management within the organization. Developed by Goodwish Engineering, this system enables efficient tracking and processing of critical files, reducing manual errors and improving workflow transparency. With features like real-time status updates and secure access controls, the File Tracking System supports Guthi Sansthan’s mission to preserve cultural heritage through streamlined operations. This is a private project, and interested parties are invited to contact Goodwish Engineering for further details or a demo.
+
+- **Link**: Contact Us (#contact)
+- **Key Features**:
+  - Real-time tracking of document status
+  - Secure access controls for sensitive files
+  - Streamlined workflow for improved efficiency
+
+## Our Products
+
+### WishChat
+WishChat is Goodwish Engineering’s flagship AI-powered product, designed to empower businesses to create and deploy intelligent chatbots with ease. This versatile platform enables seamless customer engagement and automation across websites, WhatsApp, and other social media platforms. WishChat is built to be intuitive, secure, and scalable, making it an ideal solution for businesses of all sizes, from startups to large enterprises. With WishChat, companies can enhance customer interactions, boost conversions, and gain valuable insights through an integrated analytics dashboard.
+
+- **Link**: /products
+- **Key Features**:
+  - **Drag-and-Drop Interface**: Create chatbots in minutes without coding expertise.
+  - **Multi-Platform Deployment**: Seamlessly integrate with websites, WhatsApp, and social media.
+  - **AI-Powered Responses**: Deliver smart, context-aware interactions for customers.
+  - **Analytics Dashboard**: Track engagement metrics and chatbot performance in real-time.
+  - **Security and Scalability**: Built to handle high traffic while ensuring data protection.
+- **Call to Action**: To try WishChat, visit the official product page (/products). For enterprise solutions, contact Goodwish Engineering at info@goodwish.com.np or via the contact section (#contact).
+
+WishChat Enterprise offers advanced customization and scalability, allowing businesses to build chatbots as powerful as Goodwish Engineering’s own solutions. This premium package is ideal for organizations seeking tailored AI-driven engagement tools.
+
+## Our Team
+
+Goodwish Engineering’s success is driven by a talented and diverse team of professionals across leadership, software, and robotics departments. Below is a detailed overview of our team members, their roles, and their contributions to the company’s mission.
+
+### Leadership Team
+1. **Bikrant Karki**
+   - **Position**: CEO & Founder
+   - **Role**: Visionary leader driving Goodwish Engineering’s mission to redefine Nepal’s tech landscape.
+   - **LinkedIn**: https://www.linkedin.com/in/bikrantkarki/
+2. **Abiral Bhandari**
+   - **Position**: Chief Operating Officer (COO)
+   - **Role**: Robotics Engineer (Designing and Assembly)
+   - **LinkedIn**: https://www.linkedin.com/in/abiral-bhandari-b9a454199/
+3. **Tejash Raj Katuwal**
+   - **Position**: Chief Technical Officer (CTO)
+   - **Role**: AI/ML Engineer
+   - **LinkedIn**: https://www.linkedin.com/in/tejash-katuwal-784b27244/
+4. **Sapana Chaudhary**
+   - **Role**: Finance Officer
+   - **LinkedIn**: Not available
+
+### Software Team
+The software team at Goodwish Engineering builds cutting-edge solutions that power the company’s projects and products.
+1. **Nibesh Suwal**
+   - **Position**: Head of Software Department
+   - **Role**: Senior Backend Developer
+   - **LinkedIn**: Not available
+2. **Poem Maharjan**
+   - **Role**: Junior AI/Backend Developer
+   - **LinkedIn**: https://www.linkedin.com/in/poem-maharjan-b64045265/
+3. **Nikesh Khatri**
+   - **Role**: Junior Backend Developer
+   - **LinkedIn**: https://www.linkedin.com/in/nikesh-khatri-2b04582a9/
+4. **Bikesh Maharjan**
+   - **Role**: Junior Backend Developer
+   - **LinkedIn**: https://www.linkedin.com/in/bikesh-maharjan-970a921a5/
+5. **Aakriti Rai**
+   - **Role**: Junior Backend Developer
+   - **LinkedIn**: Not available
+6. **Prajwal Karki**
+   - **Role**: Flutter Developer
+   - **LinkedIn**: https://www.linkedin.com/in/prajwal-karki-94821324b/
+7. **Abhisekh Tuladhar**
+   - **Role**: Junior AI/ML Developer
+   - **LinkedIn**: Not available
+
+### Robotics Team
+The robotics team designs and innovates advanced robotic solutions, contributing to Goodwish Engineering’s hardware expertise.
+1. **Kiran KC**
+   - **Position**: Head of Robotics Department
+   - **Role**: Robotics Engineer (Assembly)
+   - **LinkedIn**: Not available
+2. **Apil Sharma**
+   - **Role**: Junior Robotics Engineer (Programming)
+   - **LinkedIn**: Not available
+
+## Our Journey in Action
+Goodwish Engineering actively participates in events that showcase its commitment to technology and innovation. Key moments include:
+- **AI International Conference**: Showcasing AI innovations.
+- **Robotics Collaboration with CAN Team**: Demonstrating robots at an AI conference.
+- **Goodwish Team with Their Robot**: Highlighting robotics expertise.
+- **ICT Semi-Finals**: Competing among top tech innovators.
+- **Robotics Sponsor of ICT Awards 2081**: Supporting Nepal’s tech ecosystem.
+
+## Commitment to Innovation
+Goodwish Engineering is more than a technology company—it is a movement to empower Nepal through innovation. By developing solutions like WishChat, the Parking Management System, and the Face Attendance App, the company addresses real-world challenges with creativity and precision. Its team of dedicated professionals, from AI engineers to robotics specialists, works tirelessly to deliver projects that make a lasting impact. Whether it’s helping students study abroad, preserving cultural heritage, or modernizing infrastructure, Goodwish Engineering is committed to turning dreams into reality.
+
+For businesses seeking to enhance customer engagement, WishChat offers an unparalleled platform to create intelligent chatbots. The Enterprise package provides advanced customization, enabling organizations to build chatbots as powerful as those developed by Goodwish Engineering. To learn more about WishChat or explore partnership opportunities, contact Goodwish Engineering at info@goodwish.com.np or via the contact section (#contact).
+
+Join Goodwish Engineering on its journey to shape a future where Nepal’s tech talent shines on the global stage. Together, let’s innovate, empower, and build a brighter tomorrow.
