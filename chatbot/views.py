@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
-from .chatbot_rag import get_chatbot_response  # Adjust import based on your project structure
+from .chatbot_rag import get_chatbot_response  
 import base64
 from rest_framework.permissions import AllowAny
 import os

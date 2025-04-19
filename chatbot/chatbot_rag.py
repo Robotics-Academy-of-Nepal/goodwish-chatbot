@@ -8,6 +8,7 @@ from openai import AzureOpenAI
 from typing import List, Dict, Optional
 import threading
 from functools import lru_cache
+import re
 
 # Suppress LangChain deprecation warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning, module="langchain")
@@ -20,6 +21,15 @@ EMBEDDING_CACHE = {}
 client = None
 embeddings = None
 vectorstore = None
+
+
+def remove_brackets(text):
+    # This pattern matches '[' followed by any characters (non-greedy) until ']'
+    pattern = r'\[.*?\]'
+    # Replace all matches with an empty string
+    result = re.sub(pattern, '', text)
+    return result
+
 
 def initialize_clients():
     """Initialize clients once to avoid repeated initialization"""
@@ -190,6 +200,8 @@ def get_chatbot_response(query: str, image_data: Optional[str] = None, chat_hist
         response = response.replace("###", "").replace("##", "").replace("#", "")
         response = response.replace("***", "").replace("**", "").replace("*", "")
         response = response.replace('(',"").replace(')',"")
+        
+        response = remove_brackets(response)
         
         # Cache the response
         RESPONSE_CACHE[cache_key] = response
