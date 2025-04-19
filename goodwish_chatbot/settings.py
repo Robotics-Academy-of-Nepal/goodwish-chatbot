@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-cq4j^2w*n07#s*9fvci60zp8#*juce_bdq(ocuc&*%cjh__^5k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['chatbot.goodwish.com.np']
 
 
 # Application definition
