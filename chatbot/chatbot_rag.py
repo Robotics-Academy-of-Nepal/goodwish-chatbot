@@ -6,9 +6,70 @@ from langchain_chroma import Chroma
 from django.conf import settings
 from openai import AzureOpenAI
 from typing import List, Dict, Optional
+import threading
+from functools import lru_cache
 
 # Suppress LangChain deprecation warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning, module="langchain")
+
+# Cache for embeddings and responses
+RESPONSE_CACHE = {}
+EMBEDDING_CACHE = {}
+
+# Global clients
+client = None
+embeddings = None
+vectorstore = None
+
+def initialize_clients():
+    """Initialize clients once to avoid repeated initialization"""
+    global client, embeddings, vectorstore
+    
+    if client is None:
+        client = AzureOpenAI(
+            azure_endpoint=settings.AZURE_OPENAI_ENDPOINT,
+            api_key=settings.AZURE_OPENAI_API_KEY,
+            api_version="2025-01-01-preview"
+        )
+    
+    if embeddings is None:
+        embeddings = AzureOpenAIEmbeddings(
+            azure_deployment=settings.AZURE_EMBEDDING_DEPLOYMENT,
+            openai_api_version=settings.AZURE_EMBEDDING_API_VERSION,
+            azure_endpoint=settings.AZURE_OPENAI_ENDPOINT,
+            api_key=settings.AZURE_OPENAI_API_KEY
+        )
+    
+    if vectorstore is None:
+        vectorstore = Chroma(
+            persist_directory=os.path.join(os.path.dirname(__file__), "chroma_db"),
+            embedding_function=embeddings,
+            collection_name="goodwish_chatbot"
+        )
+    
+    return client, embeddings, vectorstore
+
+# LRU cache for embeddings
+@lru_cache(maxsize=100)
+def get_cached_embedding(query):
+    """Cache embeddings for common queries"""
+    client, embeddings, _ = initialize_clients()
+    return embeddings.embed_query(query)
+
+# Background task for non-critical operations
+def background_task(fn):
+    """Run function in background thread"""
+    def wrapper(*args, **kwargs):
+        thread = threading.Thread(target=fn, args=args, kwargs=kwargs)
+        thread.daemon = True
+        thread.start()
+    return wrapper
+
+@background_task
+def log_token_usage(query, response):
+    """Log token usage in background"""
+    # Your token logging code here
+    pass
 
 def get_chatbot_response(query: str, image_data: Optional[str] = None, chat_history: List[Dict] = None) -> str:
     """
@@ -23,63 +84,65 @@ def get_chatbot_response(query: str, image_data: Optional[str] = None, chat_hist
         Response string from the chatbot.
     """
     try:
-        # Initialize Azure OpenAI client
-        client = AzureOpenAI(
-            azure_endpoint=settings.AZURE_OPENAI_ENDPOINT,
-            api_key=settings.AZURE_OPENAI_API_KEY,
-            api_version="2025-01-01-preview"
-        )
-
-        # Initialize embeddings for RAG
-        embeddings = AzureOpenAIEmbeddings(
-            azure_deployment=settings.AZURE_EMBEDDING_DEPLOYMENT,
-            openai_api_version=settings.AZURE_EMBEDDING_API_VERSION,
-            azure_endpoint=settings.AZURE_OPENAI_ENDPOINT,
-            api_key=settings.AZURE_OPENAI_API_KEY
-        )
-
-        # Load ChromaDB vector store
-        vectorstore = Chroma(
-            persist_directory=os.path.join(os.path.dirname(__file__), "chroma_db"),
-            embedding_function=embeddings,
-            collection_name="goodwish_chatbot"
-        )
+        # Check if valid input is provided
+        if not query and not image_data:
+            return "Please provide a text query or an image."
+            
+        # Generate cache key based on query, image presence, and recent history
+        history_suffix = ""
+        if chat_history:
+            # Use last 2 messages for cache key to keep it reasonably sized
+            history_suffix = "_" + "_".join([f"{msg['role']}:{msg['content'][:20]}" for msg in chat_history[-2:]])
         
-        # Create retriever
-        retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
+        image_suffix = "_with_image" if image_data else ""
+        cache_key = f"{query[:50]}{image_suffix}{history_suffix}"
         
-        # Retrieve context documents
-        context_docs = retriever.invoke(query or "Describe the provided image")
+        # Check cache first
+        if cache_key in RESPONSE_CACHE:
+            return RESPONSE_CACHE[cache_key]
+
+        # Initialize clients (uses globals to avoid repeated initialization)
+        client, embeddings, vectorstore = initialize_clients()
+
+        # Create retriever with more efficient parameters
+        retriever = vectorstore.as_retriever(search_kwargs={"k": 3})  # Reduced from 5 to 3
+        
+        # Retrieve context documents for relevant query
+        search_query = query if query else "Describe the provided image"
+        context_docs = retriever.invoke(search_query)
         context = "\n".join([doc.page_content for doc in context_docs])
         
-        # Format chat history for prompt
+        # Format chat history for prompt (limiting to just last 3 messages for efficiency)
         formatted_history = ""
         if chat_history:
-            for msg in chat_history[-5:]:
+            for msg in chat_history[-3:]:  # Reduced from 5 to 3
                 content = msg['content']
                 if msg.get('image'):
                     content += " [Image provided]"
                 formatted_history += f"{msg['role']}: {content}\n"
         
-        # Prepare system prompt
+        # Prepare system prompt with fewer constraints
         system_prompt = f"""
- ### Role
-        - You are an AI chatbot designed to assist users. You can also handle greetings and small talk politely.
+        ### Role
+        - You are an AI chatbot designed to assist users with helpful and informative responses. You can handle greetings, small talk, and specific queries.
 
         ### Capabilities
         1. Language: Respond in English if the query is in English. If the query is in Nepali or Romanized Nepali, respond in pure Nepali (never Romanized Nepali).
-        2. Scope: If the query is unrelated to the document content, analyze the retrieved context and creatively redirect. Say something like: "I’m sorry, I don’t have info on your query, but I have knowledge about [document topic, e.g., robotics]. How can I assist with that?" (English) or "माफ गर्नुहोस्, मसँग तपाईंको प्रश्नको जानकारी छैन, तर म [document topic, e.g., रोबोटिक्स] बारे जानकार छु। त्यसमा कसरी मद्दत गर्न सक्छु?" (Nepali).
-        3. Word Limit: Keep responses between 80-100 words.
-        4. Greetings: Respond to greetings like "hello" or "नमस्ते" with a friendly reply, e.g., "Hello! How can I assist you today?" or "नमस्ते! म तपाईंलाई आज कसरी सहयोग गर्न सक्छु?"
+        2. Knowledge: Use the provided context when relevant, but you can also draw on your general knowledge to provide helpful responses.
+        3. Word Limit: Keep responses between 30-50 words.
+        4. Greetings: Respond to greetings like "hello" or "नमस्ते" with a friendly reply.
+        5. If there links provided when fetched from RAG always show that link no matter what.
+        6. When talking about wishchat always provide the link cleverly asking user to navigate there. If link is not provided in response of RAG use this: https://wishchat.goodwish.com.np
+        7. Also give them the goodwish engineering socials when asked if not fetched from RAG.  - Facebook: https://www.facebook.com/Goodwish-Engineering-61571584179109/
+  - LinkedIn: https://www.linkedin.com/company/goodwish-engineering/posts/?feedView=all
 
-        ### Constraints
-        - Base answers on document content unless it’s a greeting or small talk. Use the context to infer the document topic for off-topic responses.
-Chat history:
-{formatted_history}
 
-Context:
-{context}
-"""
+        Chat history:
+        {formatted_history}
+
+        Context:
+        {context}
+        """
 
         # Prepare chat messages
         messages = [
@@ -107,11 +170,11 @@ Context:
             "content": user_content or [{"type": "text", "text": "Describe the provided image"}]
         })
         
-        # Generate completion
+        # Generate completion with optimized parameters
         completion = client.chat.completions.create(
             model=settings.AZURE_OPENAI_DEPLOYMENT_NAME,
             messages=messages,
-            max_tokens=800,
+            max_tokens=200,  # Reduced from 800 to 200
             temperature=0.0,
             top_p=1,
             frequency_penalty=0,
@@ -122,6 +185,18 @@ Context:
         
         # Extract response
         response = completion.choices[0].message.content
+        
+        # Remove any markdown formatting that might appear
+        response = response.replace("###", "").replace("##", "").replace("#", "")
+        response = response.replace("***", "").replace("**", "").replace("*", "")
+        response = response.replace('(',"").replace(')',"")
+        
+        # Cache the response
+        RESPONSE_CACHE[cache_key] = response
+        
+        # Log token usage in background
+        log_token_usage(query, response)
+        
         return response
         
     except Exception as e:
@@ -138,6 +213,9 @@ if __name__ == "__main__":
     import django
     django.setup()
 
+    # Initialize clients on startup
+    initialize_clients()
+
     # Interactive loop
     print("Welcome to Goodwish Chatbot! Type 'quit' to exit.")
     chat_history = []
@@ -146,9 +224,9 @@ if __name__ == "__main__":
         if query.lower() == "quit":
             print("Goodbye!")
             break
-        response = get_chatbot_response(query, chat_history)
+        response = get_chatbot_response(query, None, chat_history)
         print(f"Bot: {response}")
         # Update history
         chat_history.append({"role": "user", "content": query})
         chat_history.append({"role": "assistant", "content": response})
-        chat_history = chat_history[-10:]  # Limit to last 10 messages
+        chat_history = chat_history[-6:]  # Limit to last 6 messages

@@ -11,7 +11,7 @@ At the core of Goodwish Engineering’s mission is the belief that technology is
 - **Phone**: 01-5400114
 - **Email**: info@goodwish.com.np
 - **Social Media**:
-  - Facebook: https://www.facebook.com/p/Goodwish-Engineering-61571584179109/
+  - Facebook: https://www.facebook.com/Goodwish-Engineering-61571584179109/
   - LinkedIn: https://www.linkedin.com/company/goodwish-engineering/posts/?feedView=all
 
 ## Vision and Mission
@@ -84,7 +84,7 @@ The File Tracking System, created for Guthi Sansthan, is a digital solution that
 ### WishChat
 WishChat is Goodwish Engineering’s flagship AI-powered product, designed to empower businesses to create and deploy intelligent chatbots with ease. This versatile platform enables seamless customer engagement and automation across websites, WhatsApp, and other social media platforms. WishChat is built to be intuitive, secure, and scalable, making it an ideal solution for businesses of all sizes, from startups to large enterprises. With WishChat, companies can enhance customer interactions, boost conversions, and gain valuable insights through an integrated analytics dashboard.
 
-- **Link**: /products
+- **Link**: https://wishchat.goodwish.com.np
 - **Key Features**:
   - **Drag-and-Drop Interface**: Create chatbots in minutes without coding expertise.
   - **Multi-Platform Deployment**: Seamlessly integrate with websites, WhatsApp, and social media.
